@@ -20,12 +20,19 @@ class SingleLinkedList
 
 function addNode($singleLinkedList, $node)
 {
-    $cpSingleLinkedList = $singleLinkedList;
-    while ($cpSingleLinkedList->nextNode !== null) {
-        $cpSingleLinkedList = $cpSingleLinkedList->nextNode;
+    while ($singleLinkedList->nextNode !== null) {
+        $singleLinkedList = $singleLinkedList->nextNode;
     }
-    $cpSingleLinkedList->nextNode = $node;
+    $singleLinkedList->nextNode = $node;
     $node->nextNode = null;
+}
+
+function delNode($singleLinkedList, $node)
+{
+    while ($singleLinkedList->nextNode->node !== $node && $singleLinkedList->nextNode !== null) {
+        $singleLinkedList = $singleLinkedList->nextNode;
+    }
+    $singleLinkedList->nextNode = $singleLinkedList->nextNode->nextNode;
 }
 
 function showSingleLinkedListNode($singleLinkedList)
@@ -34,14 +41,15 @@ function showSingleLinkedListNode($singleLinkedList)
         print_r($singleLinkedList->node . ' - ');
         $singleLinkedList = $singleLinkedList->nextNode;
     }
-    print_r($singleLinkedList->node);
+    print_r($singleLinkedList->node . "\n" . PHP_EOL);
 }
 
-$singleLinkedList = new SingleLinkedList(0);
 
+$singleLinkedList = new SingleLinkedList(0);
 for ($i = 1; $i <= 5; $i++) {
     addNode($singleLinkedList, new SingleLinkedList($i));
 }
-
+showSingleLinkedListNode($singleLinkedList);
+delNode($singleLinkedList, 3);
 showSingleLinkedListNode($singleLinkedList);
 
