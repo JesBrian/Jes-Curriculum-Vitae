@@ -27,6 +27,14 @@ function addNode($singleLinkedList, $node)
     $node->nextNode = null;
 }
 
+/**
+ * Notes: 有BUG - 删除边界
+ * User: JesBrian
+ * Date: 2018-04-18
+ * Time: 8:27
+ * @param $singleLinkedList
+ * @param $node
+ */
 function delNode($singleLinkedList, $node)
 {
     while ($singleLinkedList->nextNode->node !== $node && $singleLinkedList->nextNode !== null) {
@@ -51,5 +59,6 @@ for ($i = 1; $i <= 5; $i++) {
 }
 showSingleLinkedListNode($singleLinkedList);
 delNode($singleLinkedList, 3);
+delNode($singleLinkedList, 0); // BUG
 showSingleLinkedListNode($singleLinkedList);
 

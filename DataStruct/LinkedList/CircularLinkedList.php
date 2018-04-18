@@ -65,4 +65,6 @@ for ($i = 1; $i <= 5; $i++) {
 }
 showCircularLinkedListNode($circularLinkedList);
 delNode($circularLinkedList, 3);
+delNode($circularLinkedList, 0);
+delNode($circularLinkedList, 5);
 showCircularLinkedListNode($circularLinkedList);
