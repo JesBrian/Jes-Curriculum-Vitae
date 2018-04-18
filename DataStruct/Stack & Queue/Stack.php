@@ -9,28 +9,31 @@
 
 class Stack
 {
-    public $node;
-    public function __construct($node)
+    private $stack = [];
+    private $nowIndex = -1;
+    private $maxNodeNum = 8;
+
+    public function pushNode($node)
     {
-        $this->node = $node;
+        if ($this->nowIndex < ($this->maxNodeNum - 1)) {
+            array_push($this->stack, $node);
+            $this->nowIndex++;
+        }
+    }
+
+    function popNode()
+    {
+        if ($this->nowIndex > -1) {
+            return array_pop($this->stack);
+        }
     }
 }
 
-function pushNode($stack, $node)
-{
-
+$stack = new Stack();
+for ($i = 0; $i <= 5; $i++) {
+    $stack->pushNode($i);
 }
-
-function popNode()
-{
-
-}
-
-
-$stack = new Stack(0);
-for ($i = 1; $i <= 5; $i++) {
-    pushNode($stack, new Stack($i));
-}
+print_r($stack->popNode());
 
 
 
