@@ -18,7 +18,7 @@ print_r($array);
 array_pop($array);
 print_r($array);
 
-// 头部插入 - 入队列
+// 头部插入
 array_unshift($array, -2, -1, 0);
 print_r($array);
 

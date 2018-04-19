@@ -65,7 +65,7 @@ function inOrder($rootNode)
 }
 
 /**
- * Notes: 后序遍历 - 堆栈实现，后输出先入栈 []
+ * Notes: 后序遍历 - 堆栈实现，后输出先入栈 [ $outpotStack = 根节点 -> 右子树 -> 左子树; $tempStack =  ]
  * User: JesBrian
  * Date: 2018-04-19
  * Time: 8:33
@@ -73,7 +73,25 @@ function inOrder($rootNode)
  */
 function tailOrder($rootNode)
 {
+    $tempStack = [];
+    $outputStack = [];
+    array_push($tempStack, $rootNode);
+    while (count($tempStack) !== 0) {
+        $nowNode = array_pop($tempStack);
+        array_push($outputStack, $nowNode);
 
+        if ($nowNode->leftChil !== null) {
+            array_push($tempStack, $nowNode->leftChil);
+        }
+        if ($nowNode->rightChil !== null) {
+            array_push($tempStack, $nowNode->rightChil);
+        }
+    }
+
+    while (count($outputStack) !== 0) {
+        $noeNode = array_pop($outputStack);
+        echo $noeNode->nodeValue . ' '; // 输出节点
+    }
 }
 
 
@@ -90,5 +108,5 @@ $c->leftChil = $e;
 $c->rightChil = $f;
 
 //prevOrder($a);
-inOrder($a);
-
+//inOrder($a);
+tailOrder($a);
