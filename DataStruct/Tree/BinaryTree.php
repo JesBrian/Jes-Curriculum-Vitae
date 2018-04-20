@@ -65,7 +65,7 @@ function inOrder($rootNode)
 }
 
 /**
- * Notes: 后序遍历 - 堆栈实现，后输出先入栈 [ $outpotStack = 根节点 -> 右子树 -> 左子树; $tempStack =  ]
+ * Notes: 后序遍历 - 堆栈实现，后输出先入栈 [ $outpotStack = 根节点 -> 右子树 -> 左子树; $tempStack = 根节点 -> 左子树 -> 右子树 ]
  * User: JesBrian
  * Date: 2018-04-19
  * Time: 8:33
