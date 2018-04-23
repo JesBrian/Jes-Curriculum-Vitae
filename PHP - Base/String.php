@@ -48,7 +48,7 @@ function getStrOper4()
     // trim / ltrim / rtrim     ---- 去除字符串首位空格
     echo substr('Hello World', 1) . PHP_EOL;
     echo substr('Hello World', 0,6) . PHP_EOL;
-    echo substr('Hello World', -1) . PHP_EOL;
+    echo substr('Hello World', -5) . PHP_EOL;
     echo substr('Hello World', -4, 3) . PHP_EOL;  // 注意是从倒数x个数y个截取
 }
 //getStrOper4();
