@@ -32,7 +32,7 @@ function dbConnect($host, $username, $passwd, $dbName, $port)
 
 
 /**
- * Notes: 两种 插入数据 操作 - query($sql) / prepare($sql) -> bind_param($value) -> execute()
+ * Notes: 两种 插入数据 操作 - query($sql) / prepare($prepareSql) -> bind_param($paramNum, $value) -> execute()
  * User: JesBrian
  * Date: 2018-04-23
  * Time: 16:18
@@ -70,6 +70,76 @@ function insertOper($dbConnect)
 
 
 /**
+ * Notes: 更新操作
+ * User: JesBrian
+ * Date: 2018-04-26
+ * Time: 15:02
+ * @param $dbConnect
+ */
+function updateOper($dbConnect)
+{
+    $sql = "UPDATE phpbase_test.test_tab_a SET name = 'JesBrian666' WHERE id = 16;";
+    if ($dbConnect->query($sql) === true) {
+        echo '修改数据成功！' . PHP_EOL;
+    } else {
+        echo '修改数据失败！' . $dbConnect->error;
+    }
+
+    $prepareSql = "UPDATE phpbase_test.test_tab_a SET name = ? WHERE id = ?;";
+    $stmt = $dbConnect->prepare($prepareSql);
+    $username = 'JesBrian888';
+    $userId = 15;
+    $stmt->bind_param('ss', $username, $userId);
+    if ($stmt->execute() === true) {
+        echo '修改数据成功！' . PHP_EOL;
+    } else {
+        echo '修改数据失败！' . $dbConnect->error;
+    }
+    $username = "JesBrian999";
+    $userId = 19;
+    if ($stmt->execute() === true) {
+        echo '修改数据成功！' . PHP_EOL;
+    } else {
+        echo '修改数据失败！' . $dbConnect->error;
+    }
+}
+
+
+/**
+ * Notes: 删除数据操作
+ * User: JesBrian
+ * Date: 2018-04-26
+ * Time: 15:20
+ * @param $dbConnect
+ */
+function delOper($dbConnect)
+{
+    $sql = "DELETE FROM phpbase_test.test_tab_a WHERE phpbase_test.test_tab_a.id = 42;";
+    if ($dbConnect->query($sql) === true) {
+        echo '删除数据成功！' . PHP_EOL;
+    } else {
+        echo '删除数据失败！' . $dbConnect->error;
+    }
+
+    $prepareSql = "DELETE FROM phpbase_test.test_tab_a WHERE phpbase_test.test_tab_a.id = ?;";
+    $userId = 43;
+    $stmt = $dbConnect->prepare($prepareSql);
+    $stmt->bind_param('s', $userId);
+    if ($stmt->execute() === true) {
+        echo '删除数据成功！' . PHP_EOL;
+    } else {
+        echo '删除数据失败！' . $dbConnect->error;
+    }
+    $userId = 45;
+    if ($stmt->execute() === true) {
+        echo '删除数据成功！' . PHP_EOL;
+    } else {
+        echo '删除数据失败！' . $dbConnect->error;
+    }
+}
+
+
+/**
  * Notes: 查询操作
  * User: JesBrian
  * Date: 2018-04-23
@@ -82,7 +152,6 @@ function selectOper($dbConnect)
 }
 
 
-
 $host = '127.0.0.1';
 $username = 'root';
 $passwd = 'JesBrian';
@@ -90,6 +159,8 @@ $dbName = 'phpbase_test';
 $port = '3306';
 
 $dbConnect = dbConnect($host, $username, $passwd, $dbName, $port);
-insertOper($dbConnect);
+//insertOper($dbConnect);
+//updateOper($dbConnect);
+//delOper($dbConnect);
 
 $dbConnect->close(); // 关闭数据库连接 ！！！！
