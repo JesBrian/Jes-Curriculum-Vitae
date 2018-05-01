@@ -72,6 +72,23 @@ function baseDirOper()
  */
 function baseFileOper()
 {
+    // fopen($filename, $mode) 以某种方式打开文件 $mode -> r/r+/w/w+/a/a+
+    $fileResource = fopen('./test.log', 'r+') or exit("无法打开文件!");
 
+    // feof($file) 判断文件指针是否到文件尾
+    while (!feof($fileResource)) {
+        echo fgets($fileResource) . PHP_EOL;
+//        echo fgetc($fileResource) . PHP_EOL;
+    }
+
+    fputs($fileResource, '88888');
+
+    // file_get_contents($filename) 整个文件读取内容
+    echo file_get_contents('./test.log');
+
+    // file_put_contents($filename, $content, $mode) 将内容写入文件，$mode不指定为 FILE_APPEND 则为覆盖内容
+    file_put_contents('./test2.log','666666',FILE_APPEND);
+
+    fclose($fileResource);
 }
 baseFileOper();
