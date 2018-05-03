@@ -67,10 +67,32 @@ function baseDirOper()
 /**
  * Notes: 基本文件操作
  * User: JesBrian
+ * Date: 2018-05-02
+ * Time: 12:42
+ */
+function baseFileOper()
+{
+    // filectime($filename),filemtime(),fileatime() - 获取文件的 创建/上次访问/修改 时间
+    echo filectime('./test.sql') . PHP_EOL;
+    echo fileatime('./test.sql') . PHP_EOL;
+    echo filemtime('./test.sql') . PHP_EOL;
+
+    // filetype($filename) 获取文件类型 - fifo/char/dir/block/link/file/unknow
+    echo filetype('./test.sql') . PHP_EOL;
+
+    // filesize($filesname) 获取文件大小 - 字节大小
+    echo filesize('./test.sql') . ' bytes' . PHP_EOL;
+}
+//baseFileOper();
+
+
+/**
+ * Notes: 基本文件输入输出操作
+ * User: JesBrian
  * Date: 2018-04-25
  * Time: 13:10
  */
-function baseFileOper()
+function baseFileIOOper()
 {
     // fopen($filename, $mode) 以某种方式打开文件 $mode -> r/r+/w/w+/a/a+
     $fileResource = fopen('./test.log', 'r+') or exit("无法打开文件!");
@@ -91,4 +113,4 @@ function baseFileOper()
 
     fclose($fileResource);
 }
-baseFileOper();
+//baseFileIOOper();
