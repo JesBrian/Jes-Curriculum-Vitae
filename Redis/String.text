@@ -1,1 +1,43 @@
+Redis 字符串类型
+    基本操作：
+        设置值： - ex 过期秒数 | px 过期毫秒 | nx 键不存在才能设置成功，用于添加 | xx 键存在才能在设置，用于更新
+            set key value [ex second] [px milliseconds] [nx|xx]
 
+        获取值：
+            get key
+
+        批量设置/获取值：
+            mset key value [key value ...]
+            mget key [key ...]
+
+        计数： - in 增加 | de 减少 | by 增加/减少 increment | byfloat 增加的是浮点数
+            incr key
+            decr key
+            incrby key increment
+            decrby key increment
+            incrbyfloat key floatIncremen
+
+        尾部追加值：
+            append key value
+
+        字符串长度：
+            strlen key
+
+        设置并返回原值： 返回的是原来的值
+            getset key value
+
+        设置指定位置的字符： - offset 从 0 开始计算
+            setrange key offset value
+
+        获取部分字符串： - start 从 0 开始计算
+            getrange key start end
+
+
+    应用场景：
+        1、缓存功能
+
+        2、计数
+
+        3、共享 session
+
+        4、限速（短时间大量请求操作）

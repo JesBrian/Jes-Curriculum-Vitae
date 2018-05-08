@@ -135,8 +135,3 @@ function pregModifyOper($str)
 }
 //pregModifyOper($str);
 
-
-/**
- * 常用正则表达式
- *
- */
