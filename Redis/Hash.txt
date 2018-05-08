@@ -1,0 +1,42 @@
+
+Redis 哈希类型
+
+    基本操作：
+        设置值：
+            hset key field value
+
+        获取值：
+            hget key field
+
+        删除 field ： - 返回结果为删除 field 个数
+            hdel key field [field ...]
+
+        计算 field 个数：
+            hlen key
+
+        批量设置或获取 field-value：
+            hmset key field [key field ...]
+            hmget key [key ...]
+
+        判断某 key 下是否含有 field 属性： - 存在返回 1 ，不存在返回 0
+            hexists key field
+
+        获取所有 field ：
+            hkeys key
+
+        获取所有 value ：
+            hvals key
+
+        获取所有 field-value ： - 如果哈希元素过多会存在阻塞 redis 可能！
+            hgetall key
+
+        field 增加：
+            hincrby key field increment
+            hincrbyfloat key field floatIncrement
+
+        获取某一 field 的字符串长度：
+            hstrlen key field
+
+
+    应用场景：
+        1、缓存用户信息

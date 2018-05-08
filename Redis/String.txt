@@ -1,4 +1,6 @@
+
 Redis 字符串类型
+
     基本操作：
         设置值： - ex 过期秒数 | px 过期毫秒 | nx 键不存在才能设置成功，用于添加 | xx 键存在才能在设置，用于更新
             set key value [ex second] [px milliseconds] [nx|xx]
