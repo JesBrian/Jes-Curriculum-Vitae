@@ -1,0 +1,31 @@
+
+Redis 列表类型
+
+    基本操作：
+        添加元素：
+            rpush/lpush key value [value ...]
+            linsert key before/after wantToFindValue value
+            
+        查找元素：
+            lrange key start end    // end 为 -1 的话显示 start 到结尾的元素
+            lindex key index    // 根据 index 获取元素，最后一个元素为 -1
+        
+        列表长度：
+            llen key 
+         
+        删除元素：
+            lpop/rpop key
+            lrem key count value    // 查找 value 的元素，删除 count 个，count > 0 从左到右， count < 0 从右到左， count = 0 全部删除
+            ltrim key start end   // 其实是保留下标为 start 到 end 的元素
+            
+        修改元素：
+            lset key index newValue
+            
+        阻塞操作：            
+            blpop/brpop key [key ...] timeout    // [key ...] 多个列表的键 | timeout 超时时间
+        
+    
+    应用场景：
+        1、消息队列 - lpush/brpop
+        
+        2、文章列表
