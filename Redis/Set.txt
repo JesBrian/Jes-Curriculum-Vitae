@@ -1,0 +1,42 @@
+
+Redis 集合类型
+
+    集合内操作：
+        添加元素：
+            sadd key element [element ...]
+
+        删除元素：
+            srem key element [element ...]
+
+        计算元素个数：
+            scard key
+
+        判断元素是否在集合中：
+            sismember key element
+
+        随机从集合返回 count 个元素： - count 不写默认1个
+            srandmember key [count]
+
+        随机从集合弹出元素：
+            spop key
+
+        获取所有元素：
+            smembers key
+
+    集合间操作：
+        多个集合交集：
+            sinter key [key ...]
+
+        多个集合并集：
+            sunion key [key ...]
+
+        多个集合差集：
+            sdiff key [key ...]
+
+        将交/并/差集结果保存：
+            sinterstore otherKey key [key ...]
+            sunionstore otherKey key [key ...]
+            sdiffstore otherKey key [key ...]
+
+    应用场景：
+        1、标签
