@@ -1,0 +1,53 @@
+
+Redis 有序集合类型
+
+    集合内操作：
+        添加成员：
+            zadd key score member [score member ...]
+
+        计算成员个数：
+            zcard key
+
+        返回某个成员分数：
+            zscore key member
+
+        计算成员排名： - 排名从 0 开始计算
+            zrank key member
+
+        删除成员：
+            zrem key member [member ...]
+
+        增加成员分数
+            zincrby key increment member
+
+        返回指定排名范围的成员： - 从低到高 | 加上 withscores 会返回成员的分数 | rev 倒序
+            zrange key start end [withscores]
+            zrevrange key start end [withscore]
+
+        返回值指定分数范围的成员： - 从低到高 | min/max 支持开闭区间即()/[] 以及 ±inf代表±无穷
+            zrangebyscore key min max [withscore] [limit offset count]
+            zrevrangebyscore key min max [withscore] [limit offset count]
+
+        返回指定分数范围的成员个数： - 注意是数量
+            zcount key min max
+
+        删除指定排名内的升序元素：
+            zremrangebyrank key start end
+
+        删除指定分数范围内升序元素：
+            zramrangebyscore key min max
+
+
+    集合间操作：
+        交集：
+            zinterstore destination numkeys key [key ...] [weights weight [weight ...]] [aggregate sum|min|max]
+
+        并集：
+            zunionstore destination numkeys key [key ...] [weights weight [weight ...]] [aggregate sum|min|max]
+
+        ps - 参数说明：
+
+
+
+    应用场景：
+        1、排行榜系统
