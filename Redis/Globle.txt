@@ -18,15 +18,31 @@ client 链接 server：
 	redis-cli -h 127.0.0.1 -p 6379	
 
 
+select dbindex	// 切换数据库
+
+flushdb	    // 清除目前数据库
+
+flushall	// 清除所有数据库
+
 keys *	// 获取所有键 - 生产线上环境禁止使用
+
+rename key newkey	// 重命名键
 
 dbsize	// 获取该库所有key的数量
 
 exists key	// 查看某个键是否存在
 
+randomkey	//随即返回一个键名
+
+move key db	//迁移键到 redis 内部不同的 db
+
 del key [key ...]	// 删除键
 
 expire key seconds	// 设置键的过期时间
+
+ttl/pttl key	// 查看贱的剩余过期时间
+
+persist key	// 清除键的过期时间
 
 type key	// 获取键的类型 - [ string / hash / list / set / zset ... ]
 
