@@ -45,7 +45,7 @@ Redis 有序集合类型
         并集：
             zunionstore destination numkeys key [key ...] [weights weight [weight ...]] [aggregate sum|min|max]
 
-        ps - 参数说明：
+        ps - 参数说明： numkeys - key数量 | weights - 权重，经过计算后的集合的score | aggregate - min/max/sum 不知道详细作用是啥
 
 
 
