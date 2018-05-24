@@ -13,6 +13,7 @@
 
 interface Potrotype
 {
+    //通过在原型类中加一个copy方法，使得这个原型类的实例可以被复制
     public function copy();
 }
 
@@ -36,7 +37,6 @@ class Demo implements Potrotype
         return $this->state;
     }
 
-    //通过在原型类中加一个copy方法，使得这个原型类的实例可以被复制
     public function copy()
     {
         // 浅拷贝
