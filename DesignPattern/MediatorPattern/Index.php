@@ -30,7 +30,7 @@ class USA extends Country
         parent::__construct($mediator);
     }
 
-    //声明
+    //声明 - 调用中介者传递消息
     public function Declared($message)
     {
         $this->mediator->Declared($message, $this);
@@ -51,7 +51,7 @@ class China extends Country
         parent::__construct($mediator);
     }
 
-    //声明
+    //声明 - 调用中介者传递消息
     public function Declared($message)
     {
         $this->mediator->Declared($message, $this);
@@ -78,7 +78,7 @@ class UnitedCommit extends UnitedNations
     public $countryUsa;
     public $countryChina;
 
-    //声明
+    //声明 - 中介者根据不同对象传递的消息进行操作
     public function Declared($message, Country $colleague)
     {
         if ($colleague == $this->countryChina) {
