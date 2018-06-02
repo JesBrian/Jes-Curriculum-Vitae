@@ -29,6 +29,7 @@ abstract class Manager
     protected $name;
     //管理者上级
     protected $manager;
+
     public function __construct($_name)
     {
         $this->name = $_name;
@@ -52,16 +53,13 @@ class CommonManager extends Manager
     {
         parent::__construct($_name);
     }
+
     public function Apply(Request $_req)
     {
-        if($_req->requestType=="请假" && $_req->num<=2)
-        {
+        if ($_req->requestType == "请假" && $_req->num <= 2) {
             echo "{$this->name}:{$_req->requestContent} 数量{$_req->num}被批准。" . PHP_EOL;
-        }
-        else
-        {
-            if(isset($this->manager))
-            {
+        } else {
+            if (isset($this->manager)) {
                 $this->manager->Apply($_req);
             }
         }
@@ -79,14 +77,10 @@ class MajorDomo extends Manager
 
     public function Apply(Request $_req)
     {
-        if ($_req->requestType == "请假" && $_req->num <= 5)
-        {
+        if ($_req->requestType == "请假" && $_req->num <= 5) {
             echo "{$this->name}:{$_req->requestContent} 数量{$_req->num}被批准。" . PHP_EOL;
-        }
-        else
-        {
-            if (isset($this->manager))
-            {
+        } else {
+            if (isset($this->manager)) {
                 $this->manager->Apply($_req);
             }
         }
@@ -105,16 +99,11 @@ class GeneralManager extends Manager
 
     public function Apply(Request $_req)
     {
-        if ($_req->requestType == "请假")
-        {
+        if ($_req->requestType == "请假") {
             echo "{$this->name}:{$_req->requestContent} 数量{$_req->num}被批准。" . PHP_EOL;
-        }
-        else if($_req->requestType=="加薪" && $_req->num <= 500)
-        {
+        } else if ($_req->requestType == "加薪" && $_req->num <= 500) {
             echo "{$this->name}:{$_req->requestContent} 数量{$_req->num}被批准。" . PHP_EOL;
-        }
-        else if($_req->requestType=="加薪" && $_req->num>500)
-        {
+        } else if ($_req->requestType == "加薪" && $_req->num > 500) {
             echo "{$this->name}:{$_req->requestContent} 数量{$_req->num}再说吧。" . PHP_EOL;
         }
     }
