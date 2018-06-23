@@ -13,14 +13,6 @@
  * Time: 21:46
  */
 
-/*
-    男人这本书的内容要比封面吸引人；女人这本书的封面通常比内容更吸引人
-    男人成功时，背后多半有一个伟大的女人；女人成功时，背后多半有一个失败的男人
-    男人失败时，闷头喝酒，谁也不用劝；女人失败时，眼泪汪汪，谁也劝不了
-    男人恋爱时，凡事不懂也要装懂；女人恋爱时，遇事懂也要装作不懂
-*/
-
-
 //抽象状态
 abstract class State
 {
@@ -53,7 +45,7 @@ class Success extends State
     }
     public function GetWomanAction(VWoman $elementW)
     {
-        echo "{$elementW->type_name} :{$this->state_name}时，背后大多有一个不成功的男人。\n";
+        echo "{$elementW->type_name}:{$this->state_name}时，背后大多有一个不成功的男人。\n";
     }
 }
 
@@ -70,7 +62,7 @@ class Failure extends State
     }
     public function GetWomanAction(VWoman $elementW)
     {
-        echo "{$elementW->type_name} :{$this->state_name}时，眼泪汪汪，谁也劝不了。\n";
+        echo "{$elementW->type_name}:{$this->state_name}时，眼泪汪汪，谁也劝不了。\n";
     }
 }
 
@@ -87,7 +79,7 @@ class Amativeness extends State
     }
     public function GetWomanAction(VWoman $elementW)
     {
-        echo "{$elementW->type_name} :{$this->state_name}时，遇事懂也要装作不懂。\n";
+        echo "{$elementW->type_name}:{$this->state_name}时，遇事懂也要装作不懂。\n";
     }
 }
 
@@ -161,3 +153,4 @@ $os->Display($fs);
 //恋爱时反应
 $ats=new Amativeness();
 $os->Display($ats);
+
