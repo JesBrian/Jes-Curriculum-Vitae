@@ -148,7 +148,34 @@ function delOper($dbConnect)
  */
 function selectOper($dbConnect)
 {
+    $sql = "SELECT * FROM phpbase_test.test_tab_a";
+    $result = $dbConnect->query($sql);
+    // 参数主要使用： MYSQLI_ASSOC, MYSQLI_NUM, MYSQLI_BOTH
+    //fetch_all() 抓取所有的结果行并且以关联数据，数值索引数组，或者两者皆有的方式返回结果集。
+    //fetch_array() 以一个关联数组，数值索引数组，或者两者皆有的方式抓取一行结果。
+    //fetch_object() 以对象返回结果集的当前行。
+    //fetch_row() 以枚举数组方式返回一行结果 [ 只查询一条记录 ]
+    //fetch_assoc() 以一个关联数组方式抓取一行结果。
+    //fetch_field_direct() 以对象返回结果集中单字段的元数据。
+    //fetch_field()	以对象返回结果集中的列信息。
+    //fetch_fields() 以对象数组返回代表结果集中的列信息。
+    $row = $result->fetch_assoc();
+    var_dump($row);
 
+//    $id = 0;
+//    $name = '';
+//    $age = 0;
+//    $prepSql = "SELECT * FROM phpbase_test.test_tab_a WHERE phpbase_test.test_tab_a.id = ? AND phpbase_test.test_tab_a.name = ?";
+//    $stmt = $dbConnect->prepare($prepSql);
+//    $stmt->bind_param('is', 3, '3');
+//    //绑定结果集
+//    $stmt->bind_result($id, $name, $age);
+//    //执行
+//    $stmt->execute();
+//    //取出绑定的结果集
+//    while($stmt->fetch()){
+//        echo "--$id--$name--$age--\r";
+//    }
 }
 
 
@@ -162,5 +189,6 @@ $dbConnect = dbConnect($host, $username, $passwd, $dbName, $port);
 //insertOper($dbConnect);
 //updateOper($dbConnect);
 //delOper($dbConnect);
+selectOper($dbConnect);
 
 $dbConnect->close(); // 关闭数据库连接 ！！！！
