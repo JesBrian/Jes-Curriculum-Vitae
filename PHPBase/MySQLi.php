@@ -162,20 +162,26 @@ function selectOper($dbConnect)
     $row = $result->fetch_assoc();
     var_dump($row);
 
-//    $id = 0;
-//    $name = '';
-//    $age = 0;
-//    $prepSql = "SELECT * FROM phpbase_test.test_tab_a WHERE phpbase_test.test_tab_a.id = ? AND phpbase_test.test_tab_a.name = ?";
-//    $stmt = $dbConnect->prepare($prepSql);
-//    $stmt->bind_param('is', 3, '3');
-//    //绑定结果集
-//    $stmt->bind_result($id, $name, $age);
-//    //执行
-//    $stmt->execute();
-//    //取出绑定的结果集
-//    while($stmt->fetch()){
-//        echo "--$id--$name--$age--\r";
-//    }
+    echo '-------------------------------------     ------------------------------------' . PHP_EOL;
+
+    $id = 3;
+    $name = '3';
+    $prepSql = "SELECT * FROM phpbase_test.test_tab_a WHERE phpbase_test.test_tab_a.id = ? AND phpbase_test.test_tab_a.name = ?";
+    $stmt = $dbConnect->prepare($prepSql);
+    $stmt->bind_param('is', $id, $name);
+    // 执行
+    $stmt->execute();
+    // 绑定结果集
+    $stmt->bind_result($id, $name, $age);
+    // 取出绑定的结果集
+    while($stmt->fetch()){
+        echo "--$id--$name--$age--\r";
+    }
+
+
+    // 返回查询语句结果集中的行数
+    $stmt->store_result();
+    echo "$stmt->num_rows\n";
 }
 
 
