@@ -47,7 +47,7 @@ function pdoConnect($dsn, $username, $passwd)
  */
 function pdoInsert($pdoConnect)
 {
-    $sql = "INSERT INTO phpbase_test.test_tab_a(name, age) VALUES('JesBrian',21);";
+    $sql = "INSERT INTO test_tab_a(name, age) VALUES('JesBrian',21);";
     var_dump($pdoConnect->exec($sql));
 }
 
@@ -61,7 +61,7 @@ function pdoInsert($pdoConnect)
  */
 function pdoUpdate($pdoConnect)
 {
-    $sql = "UPDATE phpbase_test.test_tab_a SET name = 'JesBrian666' WHERE id > 6;";
+    $sql = "UPDATE test_tab_a SET name = 'JesBrian666' WHERE id > 6;";
     var_dump($pdoConnect->exec($sql));
 }
 
@@ -75,7 +75,7 @@ function pdoUpdate($pdoConnect)
  */
 function pdoDelete($pdoConnect)
 {
-    $sql = "DELETE FROM phpbase_test.test_tab_a WHERE id > 7;";
+    $sql = "DELETE FROM test_tab_a WHERE id > 7;";
     var_dump($pdoConnect->exec($sql));
 }
 
@@ -89,7 +89,7 @@ function pdoDelete($pdoConnect)
  */
 function pdoSelect($pdoConnect)
 {
-    $sql = "SELECT * FROM phpbase_test.test_tab_a";
+    $sql = "SELECT * FROM test_tab_a";
     $stmt = $pdoConnect->query($sql);
     foreach ($stmt as $row) {
         var_dump($row);
