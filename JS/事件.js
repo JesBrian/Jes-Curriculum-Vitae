@@ -22,7 +22,7 @@ element.addEventListener('click', function () {}, boolean)
  *  2、事件冒泡 - 从具体到模糊 vue.stop (只触发当前元素)
  *
  *  顺序：
- *    window -> document -> html -> body -> ...
+ *    window <-> document <-> html <-> body <-> ...
  */
 
 
